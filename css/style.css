@@ -27,13 +27,28 @@ body, html {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
+  /* Исправление для мобильных */
+  background: none;
+  border: none;
+  outline: none;
+  color: black;
+  -webkit-tap-highlight-color: transparent;
 }
 
+.menu-button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+/* Полоски внутри кнопки */
 .menu-button .line {
   background-color: black;
   height: 2px;
   width: 100%;
 }
+
+
 
 /* Версия + язык */
 .version-label {
