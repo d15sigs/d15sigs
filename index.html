@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Главная</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Контейнер с фоном -->
+  <div class="hero-image">
+
+    
+
+    <!-- Надпись версия + язык -->
+    <div class="version-label">
+      ver. 0.1.0 | <a href="#">RU</a> / <a href="#">EN</a>
+    </div>
+
+  </div>
+<!-- Боковое меню -->
+<div class="side-menu" id="sideMenu">
+  <ul>
+    <li><a href="#"><span class="glitch-word">Re:boot</span></a></li>
+    <li><a href="#">Xenoboot</a></li>
+    <li><a href="#">Contacts</a></li>
+  </ul>
+</div>
+
+<!-- Кнопка открытия меню -->
+<button class="open-menu-btn" onclick="toggleMenu()">≡</button>
+
+<script>
+  function toggleMenu() {
+    document.getElementById("sideMenu").classList.toggle("open");
+  }
+</script>
+<div id="overlay" class="menu-overlay" onclick="toggleMenu()"></div>
+
+</body>
+</html>
