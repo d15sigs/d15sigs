@@ -48,7 +48,7 @@ button {
 /* Полоски внутри кнопки */
 .menu-button .line {
   background-color: black;
-  height: 2px;
+  height: 4px;
   width: 100%;
 }
 
