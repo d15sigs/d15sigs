@@ -5,7 +5,9 @@ body, html {
   height: 100%;
   font-family: 'Inter', sans-serif;
 }
-
+button {
+  all: unset;
+}
 /* Блок с фоном */
 .hero-image {
   background-image: url('../img/bg.jpg');
@@ -34,6 +36,8 @@ body, html {
   outline: none;
   color: black;
   -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .menu-button:focus {
