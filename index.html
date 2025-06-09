@@ -9,35 +9,45 @@
 </head>
 <body>
 
+  <!-- Верхняя белая панель -->
+  <header class="top-bar">
+    <button class="menu-button" onclick="toggleMenu()">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </button>
+  </header>
+
   <!-- Контейнер с фоном -->
   <div class="hero-image">
-
-    
-
-    <!-- Надпись версия + язык -->
+    <!-- Переключение языков -->
     <div class="version-label">
        <a href="#">RU</a> | <a href="#">EN</a>
     </div>
-
   </div>
-<!-- Боковое меню -->
-<div class="side-menu" id="sideMenu">
-  <ul>
-    <li><a href="#"><span class="glitch-word">Re:boot</span></a></li>
-    <li><a href="#">Xenoboot</a></li>
-    <li><a href="#">Contacts</a></li>
-  </ul>
-</div>
 
-<!-- Кнопка открытия меню -->
-<button class="open-menu-btn" onclick="toggleMenu()">≡</button>
+  <!-- Меню -->
+  <div class="side-menu" id="sideMenu">
+    <ul>
+      <li><a href="#"><span class="glitch-word">Re:boot</span></a></li>
+      <li><a href="#">Xenoboot</a></li>
+      <li><a href="#">Contacts</a></li>
+    </ul>
+  </div>
 
-<script>
-  function toggleMenu() {
-    document.getElementById("sideMenu").classList.toggle("open");
-  }
-</script>
-<div id="overlay" class="menu-overlay" onclick="toggleMenu()"></div>
+  <!-- Затемнение -->
+  <div id="overlay" class="menu-overlay" onclick="toggleMenu()"></div>
+
+  <!-- Скрипт открытия/закрытия -->
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById("sideMenu");
+      const overlay = document.getElementById("overlay");
+
+      menu.classList.toggle("open");
+      overlay.classList.toggle("visible");
+    }
+  </script>
 
 </body>
 </html>

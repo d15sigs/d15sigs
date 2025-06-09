@@ -5,53 +5,23 @@ body, html {
   height: 100%;
   font-family: 'Inter', sans-serif;
 }
+
 button {
   all: unset;
 }
+
 /* Блок с фоном */
 .hero-image {
   background-image: url('../img/bg.jpg');
-  background-size: contain; /* Вписать картинку целиком */
-  background-repeat: no-repeat; /* Не повторять картинку */
-  background-position: center; /* Центрировать */
-  height: 100vh; /* Высота 100% экрана */
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100vh;
   position: relative;
+  margin-top: 39px;
 
+  
 }
-
-/* Кнопка-меню */
-.menu-button {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  width: 80px;
-  height: 140px; /* Примерно как 7 курсоров */
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-  /* Исправление для мобильных */
-  background: none;
-  border: none;
-  outline: none;
-  color: black;
-  -webkit-tap-highlight-color: transparent;
-  -webkit-appearance: none;
-  appearance: none;
-}
-
-.menu-button:focus {
-  outline: none;
-  box-shadow: none;
-}
-
-/* Полоски внутри кнопки */
-.menu-button .line {
-  background-color: black;
-  height: 4px;
-  width: 100%;
-}
-
 
 
 /* Версия + язык */
@@ -59,7 +29,7 @@ button {
   position: absolute;
   top: 20px;
   right: 35px;
-  transform: translateX(20px); /* сдвиг вправо на 20px */
+  transform: translateX(20px);
   font-size: 12px;
   color: black;
   opacity: 0.7;
@@ -70,39 +40,8 @@ button {
   text-decoration: none;
   margin: 0 3px;
 }
-/* Кнопка открытия меню */
-.open-menu-btn {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  font-size: 24px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  z-index: 1001;
-}
 
-/* Боковое меню */
-.side-menu {
-  position: fixed;
-  top: 0;
-  left: -250px;
-  width: 250px;
-  height: 100vh;
-  background: rgba(255, 255, 255, 0.5);  /* 50% прозрачности */
-  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.08); /* тонкая тень */
-  padding: 60px 20px;
-  transition: left 0.4s ease;
-  z-index: 1000;
-  /*border-right: 1px solid #ddd;*/ /* тонкая рамка */
-
-
-}
-
-.side-menu.open {
-  left: 0; /* показываем */
-}
-
+/* Элементы меню */
 .side-menu ul {
   list-style: none;
   padding: 0;
@@ -119,6 +58,103 @@ button {
   font-size: 18px;
   font-weight: 300;
 }
+
+/* Glitch эффект */
+.glitch-word {
+  font-family: 'Inter', sans-serif;
+  color: black;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.glitch-word:hover {
+  font-family: inherit;
+  letter-spacing: inherit;
+  background: repeating-linear-gradient(
+    0deg,
+    #444 0px,
+    #ccc 1px,
+    #ddd 2px,
+    #fff 2.5px,
+    #aaa 3px,
+    #fff 3.2px
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: #222;
+}
+
+/* Мобильный стиль */
+@media (max-width: 600px) {
+  .side-menu {
+    width: 100vw;
+    left: -100vw;
+  }
+
+  .side-menu.open {
+    left: 0;
+  }
+}
+
+/* Верхняя белая полоска */
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 40px;
+  background: white;
+  z-index: 1001;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+}
+
+/* Кнопка меню по центру */
+.menu-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 40px;
+  height: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1002;
+}
+
+.menu-button .line {
+  background-color: black;
+  height: 2px;
+  width: 100%;
+}
+
+/* Меню сверху */
+.side-menu {
+  position: fixed;
+  top: -100vh;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(6px);
+  transition: top 0.4s ease;
+  z-index: 1000;
+  padding: 20px 20px 20px 20px; /* ← заменяем 100px на 60px */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.side-menu.open {
+  top: 0;
+}
+
+/* Оверлей затемнения */
 .menu-overlay {
   position: fixed;
   top: 0;
@@ -131,45 +167,4 @@ button {
   transition: opacity 0.4s ease;
   z-index: 999;
 }
-
-.side-menu.open ~ .menu-overlay {
-  opacity: 1;
-  visibility: visible;
-}
-.glitch-word {
-  font-family: 'Inter', sans-serif;
-  color: black;
-  letter-spacing: 0.5px;
-  transition: all 0.3s ease;
-  position: relative;
-}
-
-.glitch-word:hover {
-  font-family: inherit; /* не меняем шрифт */
-  letter-spacing: inherit; /* без смещений */
-  background: repeating-linear-gradient(
-    0deg,
-    #444 0px,
-    #ccc 1px,
-    #ddd 2px,
-    #fff 2.5px,
-    #aaa 3px,
-    #fff 3.2px
-  );
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: #222; /* буквы остаются читаемыми */
-}
-@media (max-width: 600px) {
-  .side-menu {
-    width: 100vw; /* занимает всю ширину экрана */
-    left: -100vw; /* скрыто */
-  }
-
-  .side-menu.open {
-    left: 0; /* открывается на весь экран */
-  }
-}
-
-
 
