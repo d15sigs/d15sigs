@@ -103,14 +103,16 @@ button {
   top: 0;
   left: 0;
   width: 100vw;
-  height: 40px;
+  height: 60px; /* увеличим высоту, чтобы всё влезло красиво */
   background: transparent;
   z-index: 1001;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 0;
+  justify-content: flex-start;
+  align-items: flex-start; /* теперь выравниваем по верхнему краю */
+  padding: 20px 0 0 20px;  /* ← отступ сверху и слева */
+  box-shadow: none;
 }
+
 
 /* Кнопка меню по центру */
 .menu-button {
