@@ -3,7 +3,7 @@ body, html {
   margin: 0;
   padding: 0;
   height: 100%;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Chakra Petch', sans-serif;
 }
 
 button {
@@ -88,14 +88,37 @@ button {
 /* Мобильный стиль */
 @media (max-width: 600px) {
   .side-menu {
-    width: 100vw;
-    left: -100vw;
+    justify-content: center;
+    align-items: center;
+    padding-left: 0;
+    padding: 20px;
+  }
+  .side-menu ul li {
+    margin: 14px 0;
+  }
+  .reboot-submenu {
+    flex-direction: column;
+    position: static;
+    transform: none;
+    margin-left: 0;
+    margin-top: 10px;
   }
 
+  .reboot-container:hover .reboot-submenu {
+    transform: none;
+  }
+
+  .reboot-container::after {
+    display: none;
+  }
+
+  .menu-overlay {
+    background: rgba(0, 0, 0, 0.3);
+  }
+}
   .side-menu.open {
     left: 0;
   }
-}
 
 /* Верхняя белая полоска */
 .top-bar {
@@ -133,7 +156,6 @@ button {
   width: 100%;
 }
 
-/* Меню сверху */
 .side-menu {
   position: fixed;
   top: 0;
@@ -142,24 +164,22 @@ button {
   height: 100vh;
   background: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(6px);
-  transition: transform 0.4s ease, opacity 0.4s ease;
+  transition: opacity 0.4s ease;
   z-index: 1000;
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  transform: translateY(-100%);
   opacity: 0;
   pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 40px;
 }
 
+
 .side-menu.open {
-  transform: translateY(0);
   opacity: 1;
   pointer-events: auto;
 }
+
 
 
 
