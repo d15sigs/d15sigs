@@ -1,84 +1,103 @@
 <!DOCTYPE html>
+
 <html lang="ru">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Главная</title>
-  <link rel="stylesheet" href="css/style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300&display=swap" rel="stylesheet">
-
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Главная</title>
+<link href="css/style.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300&amp;display=swap" rel="stylesheet"/>
+</head>
 <body>
-
-  <!-- Верхняя белая панель -->
-  <header class="top-bar">
-    <div class="logo-container" onclick="toggleMenu()">
-      <img src="img/logo.svg" class="logo" alt="logo" />
-      <div class="burger hidden">
-        <div class="line"></div>
-        <div class="line"></div>
-        <div class="line"></div>
-      </div>
-    </div>
-  </header>
-
-  <!-- Контейнер с фоном -->
-  <div class="hero-image">
-    <!-- Переключение языков -->
-    <div class="version-label">
-       <a href="#">RU</a> | <a href="#">EN</a>
-    </div>
-  </div>
-
-  <!-- Меню -->
-  <div class="side-menu" id="sideMenu">
-    <ul>
-      <li class="reboot-container">
-        <a href="#"><span class="reboot-main">Re:boot</span></a>
-        <div class="reboot-submenu">
-          <a href="#">Lull</a>
-          <a href="#">Xeno</a>
-          <a href="#">Proto</a>
-          <a href="#">Techno</a>
-        </div>
-      </li>
-      
-      <li><a href="#">Xenoboot</a></li>
-      <li><a href="#">Contacts</a></li>
-    </ul>
-  </div>
-
-  <!-- Затемнение -->
-  <div id="overlay" class="menu-overlay" onclick="toggleMenu()"></div>
-
-  <!-- Скрипт открытия/закрытия -->
+<!-- Верхняя белая панель -->
+<header class="top-bar">
+<div class="logo-container" onclick="toggleMenu()">
+<img alt="logo" class="logo" src="img/logo.svg"/>
+<div class="burger hidden">
+<div class="line"></div>
+<div class="line"></div>
+<div class="line"></div>
+</div>
+</div>
+</header>
+<!-- Контейнер с фоном -->
+<div class="hero-image">
+<!-- Переключение языков -->
+<div class="version-label">
+<a href="#">RU</a> | <a href="#">EN</a>
+</div>
+</div>
+<!-- Меню -->
+<div class="side-menu" id="sideMenu">
+<ul class="menu-items">
+<li class="reboot-container">
+<a href="#"><span class="reboot-main">Re:boot</span></a>
+<div class="reboot-submenu">
+<a href="#">Lull</a>
+<a href="#">Xeno</a>
+<a href="#">Proto</a>
+<a href="#">Techno</a>
+</div>
+</li>
+<li><a href="#">Xenoboot</a></li>
+<li><a href="#">Contacts</a></li>
+</ul>
+</div>
+<!-- Затемнение -->
+<div class="menu-overlay" id="overlay" onclick="toggleMenu()"></div>
+<!-- Скрипт открытия/закрытия -->
 <script>
-  function toggleMenu() {
-    const menu = document.getElementById("sideMenu");
-    const overlay = document.getElementById("overlay");
-
-    menu.classList.toggle("open");
-    overlay.classList.toggle("visible");
-  }
-
-  // наведение на логотип при загрузке страницы
-  document.addEventListener("DOMContentLoaded", () => {
-    const logoContainer = document.querySelector('.logo-container');
-    const logo = document.querySelector('.logo');
-    const burger = document.querySelector('.burger');
-
-    if (logoContainer && logo && burger) {
-      logoContainer.addEventListener('mouseenter', () => {
-        logo.classList.add('fade-out');
-        burger.classList.remove('hidden');
+    document.addEventListener('DOMContentLoaded', () => {
+      const logoContainer = document.querySelector('.logo-container');
+      const logo = document.querySelector('.logo');
+      const burger = document.querySelector('.burger');
+      const menuItems = document.querySelectorAll('.menu-items > li');
+    
+      // Логика логотипа
+      if (logoContainer && logo && burger) {
+        logoContainer.addEventListener('mouseenter', () => {
+          logo.classList.add('fade-out');
+          burger.classList.remove('hidden');
+        });
+    
+        logoContainer.addEventListener('mouseleave', () => {
+          logo.classList.remove('fade-out');
+          burger.classList.add('hidden');
+        });
+      }
+    
+      // Логика меню
+      menuItems.forEach(item => {
+        item.addEventListener('mouseenter', () => {
+          menuItems.forEach(el => {
+            el.classList.add('dimmed');
+            el.classList.remove('active');
+          });
+          item.classList.add('active');
+        });
+    
+        item.addEventListener('mouseleave', () => {
+          menuItems.forEach(el => {
+            el.classList.remove('dimmed');
+            el.classList.remove('active');
+          });
+        });
       });
+    });
+    </script>
 
-      logoContainer.addEventListener('mouseleave', () => {
-        logo.classList.remove('fade-out');
-        burger.classList.add('hidden');
-      });
-    }
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const rebootContainer = document.querySelector('.reboot-container');
+  const menuItems = document.querySelector('.menu-items');
+
+  rebootContainer.addEventListener('mouseenter', () => {
+    menuItems.classList.add('hover-filtered');
   });
-</script>
-</body>
 
-</html>
+  rebootContainer.addEventListener('mouseleave', () => {
+    menuItems.classList.remove('hover-filtered');
+  });
+});
+</script>
+</body></html>

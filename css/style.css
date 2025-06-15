@@ -93,9 +93,11 @@ button {
     padding-left: 0;
     padding: 20px;
   }
+
   .side-menu ul li {
     margin: 14px 0;
   }
+
   .reboot-submenu {
     flex-direction: column;
     position: static;
@@ -115,10 +117,12 @@ button {
   .menu-overlay {
     background: rgba(0, 0, 0, 0.3);
   }
-}
+
   .side-menu.open {
     left: 0;
   }
+}
+
 
 /* Верхняя белая полоска */
 .top-bar {
@@ -201,14 +205,6 @@ button {
 .reboot-container {
   position: relative;
 }
-.reboot-container::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 100%;
-  width: 180px;
-  height: 100%;
-}
 
 .reboot-submenu {
   position: absolute;
@@ -285,4 +281,47 @@ button {
 .hidden {
   opacity: 0;
   pointer-events: none;
+}
+/* Показывать только активный пункт меню */
+.menu-items li {
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.2s ease;
+}
+/* Скрыть все пункты меню, кроме активного */
+.menu-items li.dimmed {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.menu-items li.active {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+.menu-items li.dimmed {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.menu-items li.active {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+
+
+
+/* Исчезновение всех пунктов меню при наведении, кроме активного */
+.menu-items.hover-filtered li {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.menu-items.hover-filtered li.reboot-container,
+.menu-items.hover-filtered li.reboot-container .reboot-submenu a {
+  opacity: 1 !important;
+  pointer-events: auto !important;
 }
