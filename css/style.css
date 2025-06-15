@@ -232,8 +232,12 @@ button {
 
 .logo {
   max-height: 40px;
+  max-width: 60px;
+  height: auto;
+  display: block;
   transition: opacity 0.4s ease;
 }
+
 
 .logo.fade-out {
   opacity: 0;
