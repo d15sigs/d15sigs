@@ -11,11 +11,14 @@
 
   <!-- Верхняя белая панель -->
   <header class="top-bar">
-    <button class="menu-button" onclick="toggleMenu()">
-      <div class="line"></div>
-      <div class="line"></div>
-      <div class="line"></div>
-    </button>
+    <div class="logo-container" onclick="toggleMenu()">
+      <img src="img/logo.svg" class="logo" alt="logo" />
+      <div class="burger hidden">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+      </div>
+    </div>
   </header>
 
   <!-- Контейнер с фоном -->
@@ -29,7 +32,16 @@
   <!-- Меню -->
   <div class="side-menu" id="sideMenu">
     <ul>
-      <li><a href="#"><span class="glitch-word">Re:boot</span></a></li>
+      <li class="reboot-container">
+        <a href="#"><span class="reboot-main">Re:boot</span></a>
+        <div class="reboot-submenu">
+          <a href="#">Lull</a>
+          <a href="#">Xeno</a>
+          <a href="#">Proto</a>
+          <a href="#">Techno</a>
+        </div>
+      </li>
+      
       <li><a href="#">Xenoboot</a></li>
       <li><a href="#">Contacts</a></li>
     </ul>
@@ -39,15 +51,34 @@
   <div id="overlay" class="menu-overlay" onclick="toggleMenu()"></div>
 
   <!-- Скрипт открытия/закрытия -->
-  <script>
-    function toggleMenu() {
-      const menu = document.getElementById("sideMenu");
-      const overlay = document.getElementById("overlay");
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById("sideMenu");
+    const overlay = document.getElementById("overlay");
 
-      menu.classList.toggle("open");
-      overlay.classList.toggle("visible");
+    menu.classList.toggle("open");
+    overlay.classList.toggle("visible");
+  }
+
+  // наведение на логотип при загрузке страницы
+  document.addEventListener("DOMContentLoaded", () => {
+    const logoContainer = document.querySelector('.logo-container');
+    const logo = document.querySelector('.logo');
+    const burger = document.querySelector('.burger');
+
+    if (logoContainer && logo && burger) {
+      logoContainer.addEventListener('mouseenter', () => {
+        logo.classList.add('fade-out');
+        burger.classList.remove('hidden');
+      });
+
+      logoContainer.addEventListener('mouseleave', () => {
+        logo.classList.remove('fade-out');
+        burger.classList.add('hidden');
+      });
     }
-  </script>
-
+  });
+</script>
 </body>
+
 </html>

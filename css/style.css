@@ -15,10 +15,10 @@ button {
   background-image: url('../img/bg.jpg');
   background-size: contain;
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: 25% center;
   height: 100vh;
   position: relative;
-  margin-top: 39px;
+  
 
   
 }
@@ -104,12 +104,12 @@ button {
   left: 0;
   width: 100vw;
   height: 40px;
-  background: white;
+  background: transparent;
   z-index: 1001;
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+  box-shadow: 0;
 }
 
 /* Кнопка меню по центру */
@@ -134,25 +134,33 @@ button {
 /* Меню сверху */
 .side-menu {
   position: fixed;
-  top: -100vh;
+  top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
   background: rgba(255, 255, 255, 0.5);
   backdrop-filter: blur(6px);
-  transition: top 0.4s ease;
+  transition: transform 0.4s ease, opacity 0.4s ease;
   z-index: 1000;
-  padding: 20px 20px 20px 20px; /* ← заменяем 100px на 60px */
+  padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
 }
 
 .side-menu.open {
-  top: 0;
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
 }
+
+
+
 
 /* Оверлей затемнения */
 .menu-overlay {
@@ -167,4 +175,88 @@ button {
   transition: opacity 0.4s ease;
   z-index: 999;
 }
+/* Re:boot с подпунктами */
+.reboot-container {
+  position: relative;
+}
+.reboot-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 100%;
+  width: 180px;
+  height: 100%;
+}
 
+.reboot-submenu {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  margin-left: 10px;
+  display: flex;
+  gap: 16px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: translateY(10px);
+  white-space: nowrap;
+}
+
+.reboot-container:hover .reboot-submenu {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+
+.reboot-submenu a {
+  color: black;
+  font-size: 14px;
+  text-decoration: none;
+  font-weight: 300;
+  transition: color 0.3s ease;
+}
+
+.reboot-submenu a:hover {
+  color: #555;
+}
+.logo-container {
+  position: relative;
+  cursor: pointer;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  max-height: 40px;
+  transition: opacity 0.4s ease;
+}
+
+.logo.fade-out {
+  opacity: 0;
+}
+
+.burger {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.burger .line {
+  height: 3px;
+  background: black;
+  border-radius: 2px;
+}
+
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
