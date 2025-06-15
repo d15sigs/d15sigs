@@ -15,7 +15,7 @@ button {
   background-image: url('../img/bg.jpg');
   background-size: contain;
   background-repeat: no-repeat;
-  background-position: 25% center;
+  background-position: center center;
   height: 100vh;
   position: relative;
   
