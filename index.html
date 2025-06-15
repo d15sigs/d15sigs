@@ -21,7 +21,6 @@
       </div>
     </div>
   </header>
-
   <!-- Контейнер с фоном -->
   <div class="hero-image">
     <!-- Переключение языков -->
@@ -53,58 +52,30 @@
 
   <!-- Скрипт открытия/закрытия -->
 <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const logoContainer = document.querySelector('.logo-container');
-      const logo = document.querySelector('.logo');
-      const burger = document.querySelector('.burger');
-      const menuItems = document.querySelectorAll('.menu-items > li');
-    
-      // Логика логотипа
-      if (logoContainer && logo && burger) {
-        logoContainer.addEventListener('mouseenter', () => {
-          logo.classList.add('fade-out');
-          burger.classList.remove('hidden');
-        });
-    
-        logoContainer.addEventListener('mouseleave', () => {
-          logo.classList.remove('fade-out');
-          burger.classList.add('hidden');
-        });
-      }
-    
-      // Логика меню
-      menuItems.forEach(item => {
-        item.addEventListener('mouseenter', () => {
-          menuItems.forEach(el => {
-            el.classList.add('dimmed');
-            el.classList.remove('active');
-          });
-          item.classList.add('active');
-        });
-    
-        item.addEventListener('mouseleave', () => {
-          menuItems.forEach(el => {
-            el.classList.remove('dimmed');
-            el.classList.remove('active');
-          });
-        });
+  function toggleMenu() {
+    const menu = document.getElementById("sideMenu");
+    const overlay = document.getElementById("overlay");
+    menu.classList.toggle("open");
+    overlay.classList.toggle("visible");
+  }
+// наведение на логотип при загрузке страницы
+  document.addEventListener("DOMContentLoaded", () => {
+    const logoContainer = document.querySelector('.logo-container');
+    const logo = document.querySelector('.logo');
+    const burger = document.querySelector('.burger');
+
+    if (logoContainer && logo && burger) {
+      logoContainer.addEventListener('mouseenter', () => {
+        logo.classList.add('fade-out');
+        burger.classList.remove('hidden');
       });
-    });
-    </script>
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const rebootContainer = document.querySelector('.reboot-container');
-  const menuItems = document.querySelector('.menu-items');
-
-  rebootContainer.addEventListener('mouseenter', () => {
-    menuItems.classList.add('hover-filtered');
+      logoContainer.addEventListener('mouseleave', () => {
+        logo.classList.remove('fade-out');
+        burger.classList.add('hidden');
+      });
+    }
   });
-
-  rebootContainer.addEventListener('mouseleave', () => {
-    menuItems.classList.remove('hover-filtered');
-  });
-});
 </script>
-</body></html>
-<!-- test -->
+</body>
+<!-- тестовая надпись -->
