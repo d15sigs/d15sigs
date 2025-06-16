@@ -176,13 +176,13 @@ button {
   pointer-events: none;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
-  padding-left: 40px;
-  .side-menu:not(.open) .menu-items li {
+  justify-content: center;
+  padding: 0;
+  
+}
+.side-menu:not(.open) .menu-items li {
   pointer-events: none;
   user-select: none;
-}
-
 }
 
 
@@ -352,10 +352,10 @@ button {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: fixed;
+  position: static;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: none;
   gap: 6px;
   padding: 0;
   margin: 0;
@@ -378,3 +378,15 @@ button {
   display: none;
 }
 
+@media (max-width: 600px) {
+  .menu-items.centered {
+    position: static !important;
+    transform: none !important;
+  }
+
+  .side-menu {
+    padding: 0 !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+}
