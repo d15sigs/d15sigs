@@ -325,3 +325,17 @@ button {
   opacity: 1 !important;
   pointer-events: auto !important;
 }
+.scroll-gallery {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+.photo-slide {
+  height: 100vh;
+  scroll-snap-align: start;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
