@@ -1,0 +1,342 @@
+/* Общие стили */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Chakra Petch', sans-serif;
+}
+
+button {
+  all: unset;
+}
+
+/* Блок с фоном */
+.hero-image {
+  background-image: url('../img/bg.jpg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  height: 100vh;
+  position: relative;
+  
+
+  
+}
+
+
+/* Версия + язык */
+.version-label {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  transform: translateX(20px);
+  font-size: 12px;
+  color: black;
+  opacity: 0.7;
+}
+
+.version-label a {
+  color: black;
+  text-decoration: none;
+  margin: 0 3px;
+}
+
+/* Элементы меню */
+.side-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.side-menu ul li {
+  margin: 20px 0;
+}
+
+.side-menu ul li a {
+  text-decoration: none;
+  color: black;
+  font-size: 18px;
+  font-weight: 300;
+}
+
+/* Glitch эффект */
+.glitch-word {
+  font-family: 'Inter', sans-serif;
+  color: black;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.glitch-word:hover {
+  font-family: inherit;
+  letter-spacing: inherit;
+  background: repeating-linear-gradient(
+    0deg,
+    #444 0px,
+    #ccc 1px,
+    #ddd 2px,
+    #fff 2.5px,
+    #aaa 3px,
+    #fff 3.2px
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: #222;
+}
+
+/* Мобильный стиль */
+@media (max-width: 600px) {
+  .side-menu {
+    justify-content: center;
+    align-items: center;
+    padding-left: 0;
+    padding: 20px;
+  }
+
+  .side-menu ul li {
+    margin: 14px 0;
+  }
+
+  .reboot-submenu {
+    flex-direction: column;
+    position: static;
+    transform: none;
+    margin-left: 0;
+    margin-top: 10px;
+  }
+
+  .reboot-container:hover .reboot-submenu {
+    transform: none;
+  }
+
+  .reboot-container::after {
+    display: none;
+  }
+
+  .menu-overlay {
+    background: rgba(0, 0, 0, 0.3);
+  }
+
+  .side-menu.open {
+    left: 0;
+  }
+}
+
+
+/* Верхняя белая полоска */
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 60px; /* увеличим высоту, чтобы всё влезло красиво */
+  background: transparent;
+  z-index: 1001;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start; /* теперь выравниваем по верхнему краю */
+  padding: 20px 0 0 20px;  /* ← отступ сверху и слева */
+  box-shadow: none;
+}
+
+
+/* Кнопка меню по центру */
+.menu-button {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 40px;
+  height: 20px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1002;
+}
+
+.menu-button .line {
+  background-color: black;
+  height: 2px;
+  width: 100%;
+}
+
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(6px);
+  transition: opacity 0.4s ease;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-left: 40px;
+}
+
+
+.side-menu.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+
+
+
+
+/* Оверлей затемнения */
+.menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.2);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.4s ease;
+  z-index: 999;
+}
+/* Re:boot с подпунктами */
+.reboot-container {
+  position: relative;
+}
+
+.reboot-submenu {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  margin-left: 10px;
+  display: flex;
+  gap: 16px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  transform: translateY(10px);
+  white-space: nowrap;
+}
+
+.reboot-container:hover .reboot-submenu {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+
+.reboot-submenu a {
+  color: black;
+  font-size: 14px;
+  text-decoration: none;
+  font-weight: 300;
+  transition: color 0.3s ease;
+}
+
+.reboot-submenu a:hover {
+  color: #555;
+}
+.logo-container {
+  position: relative;
+  cursor: pointer;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  width: 60px;
+  height: auto;
+  display: block;
+  transition: opacity 0.4s ease;
+}
+
+
+
+.logo.fade-out {
+  opacity: 0;
+}
+
+.burger {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 24px;
+  height: 18px;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.burger .line {
+  height: 3px;
+  background: black;
+  border-radius: 2px;
+}
+
+.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+/* Показывать только активный пункт меню */
+.menu-items li {
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.2s ease;
+}
+/* Скрыть все пункты меню, кроме активного */
+.menu-items li.dimmed {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.menu-items li.active {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+.menu-items li.dimmed {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.menu-items li.active {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+
+
+
+/* Исчезновение всех пунктов меню при наведении, кроме активного */
+.menu-items.hover-filtered li {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.menu-items.hover-filtered li.reboot-container,
+.menu-items.hover-filtered li.reboot-container .reboot-submenu a {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+.scroll-gallery {
+  height: 100vh;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
+}
+
+.photo-slide {
+  height: 100vh;
+  scroll-snap-align: start;
+  background-size: contain;
+  background-position: center;
+  background-color: white;
+  background-repeat: no-repeat;
+}
