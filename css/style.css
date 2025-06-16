@@ -3,7 +3,9 @@ body, html {
   margin: 0;
   padding: 0;
   height: 100%;
-  font-family: 'Chakra Petch', sans-serif;
+ font-family: 'Chakra Petch', 'Exo 2', sans-serif;
+
+
 }
 
 button {
@@ -176,6 +178,11 @@ button {
   align-items: center;
   justify-content: flex-start;
   padding-left: 40px;
+  .side-menu:not(.open) .menu-items li {
+  pointer-events: none;
+  user-select: none;
+}
+
 }
 
 
@@ -340,4 +347,31 @@ button {
   background-position: center;
   background-repeat: no-repeat;
 }
-/* тест*/
+.menu-items.centered {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100%;
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.menu-items.centered li a {
+  font-size: 28px;
+  color: black;
+  text-decoration: none;
+  font-weight: 300;
+  transition: color 0.3s ease;
+}
+
+.menu-items.centered li a:hover {
+  color: #555;
+}
+.side-menu:not(.open) .menu-items {
+  display: none;
+}
+
