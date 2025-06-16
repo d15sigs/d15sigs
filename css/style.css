@@ -335,7 +335,8 @@ button {
 .photo-slide {
   height: 100vh;
   scroll-snap-align: start;
-  background-size: cover;
+  background-size: contain;
+  background-color: white;
   background-position: center;
   background-repeat: no-repeat;
 }
