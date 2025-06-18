@@ -134,13 +134,20 @@
   const slideA = document.getElementById("slideA");
   const slideB = document.getElementById("slideB");
 
-  const images = [
-    "img/Dg.jpg",
-    "img/Dg1.jpg",
-    "img/Dg2.jpg",
-    "img/Dg3.jpg",
-    "img/Dg4.jpg"
-  ];
+ const isMobile = window.innerWidth <= 600;
+
+const images = isMobile ? [
+  "img/Dsmob.jpg",
+  "img/Dsmob1.jpg",
+  "img/Dsmob2.jpg"
+] : [
+  "img/Dg.jpg",
+  "img/Dg1.jpg",
+  "img/Dg2.jpg",
+  "img/Dg3.jpg",
+  "img/Dg4.jpg"
+];
+
 
   let currentIndex = 0;
   let directionForward = true;
