@@ -364,12 +364,13 @@ button {
 
 
 .menu-items.centered li a {
-  font-size: 28px;
+  font-size: clamp(16px, 5vw, 28px);
   color: black;
   text-decoration: none;
   font-weight: 300;
   transition: color 0.3s ease;
 }
+
 
 .menu-items.centered li a:hover {
   color: #555;
