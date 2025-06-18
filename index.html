@@ -124,13 +124,20 @@
   const slideA = document.getElementById("slideA");
   const slideB = document.getElementById("slideB");
 
- const images = [
+ const images = window.innerWidth <= 600 ? [
+  "img/Dg_mob.jpg",
+  "img/Dg1_mob.jpg",
+  "img/Dg2_mob.jpg",
+  "img/Dg3_mob.jpg",
+  "img/Dg4_mob.jpg"
+] : [
   "img/Dg.jpg",
   "img/Dg1.jpg",
   "img/Dg2.jpg",
   "img/Dg3.jpg",
   "img/Dg4.jpg"
 ];
+
 
 
 
@@ -187,11 +194,16 @@
   let directionForward2 = true;
   let showingA2 = true;
 
-  const images2 = [
+  const images2 = window.innerWidth <= 600 ? [
+  "img/block2_a_mob.jpg",
+  "img/block2_b_mob.jpg",
+  "img/block2_c_mob.jpg"
+] : [
   "img/block2_a.jpg",
   "img/block2_b.jpg",
   "img/block2_c.jpg"
 ];
+
 
   slideA2.style.backgroundImage = `url('${images2[currentIndex2]}')`;
   slideA2.style.opacity = "1";
@@ -242,11 +254,16 @@
   let directionForward3 = true;
   let showingA3 = true;
 
-  const images3 = [
-    "img/block3_01.jpg",
-    "img/block3_02.jpg",
-    "img/block3_03.jpg"
-  ];
+  const images3 = window.innerWidth <= 600 ? [
+  "img/block3_01_mob.jpg",
+  "img/block3_02_mob.jpg",
+  "img/block3_03_mob.jpg"
+] : [
+  "img/block3_01.jpg",
+  "img/block3_02.jpg",
+  "img/block3_03.jpg"
+];
+
 
   // Проверка: выводим первый кадр в консоль
   console.log("Блок 3, стартовое изображение:", images3[0]);
@@ -302,11 +319,16 @@
   let directionForward4 = true;
   let showingA4 = true;
 
-  const images4 = [
+  const images4 = window.innerWidth <= 600 ? [
+  "img/block4_X_mob.jpg",
+  "img/block4_Y_mob.jpg",
+  "img/block4_Z_mob.jpg"
+] : [
   "img/block4_X.jpg",
   "img/block4_Y.jpg",
   "img/block4_Z.jpg"
 ];
+
 
 
 
@@ -359,11 +381,16 @@
   let directionForward5 = true;
   let showingA5 = true;
 
-  const images5 = [
+ const images5 = window.innerWidth <= 600 ? [
+  "img/block5_one_mob.jpg",
+  "img/block5_two_mob.jpg",
+  "img/block5_three_mob.jpg"
+] : [
   "img/block5_one.jpg",
   "img/block5_two.jpg",
   "img/block5_three.jpg"
 ];
+
 
 
   slideA5.style.backgroundImage = `url('${images5[currentIndex5]}')`;
