@@ -28,9 +28,27 @@
   <div class="slide-layer visible" id="slideA"></div>
   <div class="slide-layer" id="slideB"></div>
 </section>
+<section class="photo-slide first-slide" onclick="toggleMenu()">
+  <div class="slide-layer visible" id="slideA2"></div>
+  <div class="slide-layer" id="slideB2"></div>
+</section>
+<section class="photo-slide first-slide" onclick="toggleMenu()">
+  <div class="slide-layer visible" id="slideA3"></div>
+  <div class="slide-layer" id="slideB3"></div>
+</section>
 
-  <section class="photo-slide" style="background-image: url('img/photo1.jpg');" onclick="toggleMenu2()"></section>
- <section class="photo-slide" style="background-image: url('img/photo2.jpg');"></section>
+<section class="photo-slide first-slide" onclick="toggleMenu()">
+  <div class="slide-layer visible" id="slideA4"></div>
+  <div class="slide-layer" id="slideB4"></div>
+</section>
+
+<section class="photo-slide first-slide" onclick="toggleMenu()">
+  <div class="slide-layer visible" id="slideA5"></div>
+  <div class="slide-layer" id="slideB5"></div>
+</section>
+
+
+  
 
 </div>
 
@@ -49,17 +67,7 @@
 
   <!-- Затемнение -->
   <div id="overlay" class="menu-overlay" onclick="toggleMenu()"></div>
-<!-- Второе меню -->
-<div class="side-menu" id="sideMenu2">
-  <ul class="menu-items centered">
-    <li><a href="#">bags</a></li>
-    <li><a href="#">backpack</a></li>
-    <li><a href="#">acsessories</a></li>
-  </ul>
-</div>
 
-<!-- Затемнение для второй шторки -->
-<div id="overlay2" class="menu-overlay" onclick="toggleMenu2()"></div>
 
   <!-- Скрипт открытия/закрытия -->
 <script>
@@ -69,12 +77,7 @@
     menu.classList.toggle("open");
     overlay.classList.toggle("visible");
   }
-  function toggleMenu2() {
-  const menu = document.getElementById("sideMenu2");
-  const overlay = document.getElementById("overlay2");
-  menu.classList.toggle("open");
-  overlay.classList.toggle("visible");
-}
+  
 
 // наведение на логотип при загрузке страницы
   document.addEventListener("DOMContentLoaded", () => {
@@ -110,20 +113,7 @@
       burger.classList.add('hidden');
     });
   }
-    const menu2 = document.getElementById("sideMenu2");
-  const overlay2 = document.getElementById("overlay2");
-
-  menu2.addEventListener("click", (e) => {
-    if (!e.target.closest('a')) {
-      toggleMenu2();
-    }
-  });
-
-  menu2.querySelectorAll('a').forEach(el => {
-    el.addEventListener("click", e => {
-      e.stopPropagation();
-    });
-  });
+    
 
 });
 
@@ -134,19 +124,15 @@
   const slideA = document.getElementById("slideA");
   const slideB = document.getElementById("slideB");
 
- const isMobile = window.innerWidth <= 600;
-
-const images = isMobile ? [
-  "img/Dsmob.jpg",
-  "img/Dsmob1.jpg",
-  "img/Dsmob2.jpg"
-] : [
+ const images = [
   "img/Dg.jpg",
   "img/Dg1.jpg",
   "img/Dg2.jpg",
   "img/Dg3.jpg",
   "img/Dg4.jpg"
 ];
+
+
 
 
   let currentIndex = 0;
@@ -193,8 +179,233 @@ const images = isMobile ? [
     };
   }, 3000);
 </script>
+<script>
+  const slideA2 = document.getElementById("slideA2");
+  const slideB2 = document.getElementById("slideB2");
+
+  let currentIndex2 = 0;
+  let directionForward2 = true;
+  let showingA2 = true;
+
+  const images2 = [
+  "img/block2_a.jpg",
+  "img/block2_b.jpg",
+  "img/block2_c.jpg"
+];
+
+  slideA2.style.backgroundImage = `url('${images2[currentIndex2]}')`;
+  slideA2.style.opacity = "1";
+  slideA2.style.zIndex = "2";
+  slideB2.style.opacity = "0";
+  slideB2.style.zIndex = "1";
+
+  setInterval(() => {
+    if (directionForward2) {
+      currentIndex2++;
+      if (currentIndex2 === images2.length) {
+        directionForward2 = false;
+        currentIndex2 = images2.length - 2;
+      }
+    } else {
+      currentIndex2--;
+      if (currentIndex2 < 0) {
+        directionForward2 = true;
+        currentIndex2 = 1;
+      }
+    }
+
+    const nextImage2 = images2[currentIndex2];
+    const img2 = new Image();
+    img2.src = nextImage2;
+
+    img2.onload = () => {
+      const currentSlide2 = showingA2 ? slideA2 : slideB2;
+      const nextSlide2 = showingA2 ? slideB2 : slideA2;
+
+      nextSlide2.style.backgroundImage = `url('${nextImage2}')`;
+      nextSlide2.style.zIndex = "3";
+      nextSlide2.style.opacity = "1";
+
+      currentSlide2.style.opacity = "0";
+      currentSlide2.style.zIndex = "1";
+
+      showingA2 = !showingA2;
+    };
+  }, 3000);
+</script>
+
+<script>
+  const slideA3 = document.getElementById("slideA3");
+  const slideB3 = document.getElementById("slideB3");
+
+  let currentIndex3 = 0;
+  let directionForward3 = true;
+  let showingA3 = true;
+
+  const images3 = [
+    "img/block3_01.jpg",
+    "img/block3_02.jpg",
+    "img/block3_03.jpg"
+  ];
+
+  // Проверка: выводим первый кадр в консоль
+  console.log("Блок 3, стартовое изображение:", images3[0]);
+
+  // Первое изображение
+  slideA3.style.backgroundImage = `url('${images3[currentIndex3]}')`;
+  slideA3.style.opacity = "1";
+  slideA3.style.zIndex = "2";
+  slideB3.style.opacity = "0";
+  slideB3.style.zIndex = "1";
+
+  setInterval(() => {
+    if (directionForward3) {
+      currentIndex3++;
+      if (currentIndex3 === images3.length) {
+        directionForward3 = false;
+        currentIndex3 = images3.length - 2;
+      }
+    } else {
+      currentIndex3--;
+      if (currentIndex3 < 0) {
+        directionForward3 = true;
+        currentIndex3 = 1;
+      }
+    }
+
+    const nextImage3 = images3[currentIndex3];
+    console.log("Переход на:", nextImage3);
+    const img3 = new Image();
+    img3.src = nextImage3;
+
+    img3.onload = () => {
+      const currentSlide3 = showingA3 ? slideA3 : slideB3;
+      const nextSlide3 = showingA3 ? slideB3 : slideA3;
+
+      nextSlide3.style.backgroundImage = `url('${nextImage3}')`;
+      nextSlide3.style.zIndex = "3";
+      nextSlide3.style.opacity = "1";
+
+      currentSlide3.style.opacity = "0";
+      currentSlide3.style.zIndex = "1";
+
+      showingA3 = !showingA3;
+    };
+  }, 3000);
+</script>
+
+<script>
+  const slideA4 = document.getElementById("slideA4");
+  const slideB4 = document.getElementById("slideB4");
+
+  let currentIndex4 = 0;
+  let directionForward4 = true;
+  let showingA4 = true;
+
+  const images4 = [
+  "img/block4_X.jpg",
+  "img/block4_Y.jpg",
+  "img/block4_Z.jpg"
+];
 
 
+
+  slideA4.style.backgroundImage = `url('${images4[currentIndex4]}')`;
+  slideA4.style.opacity = "1";
+  slideA4.style.zIndex = "2";
+  slideB4.style.opacity = "0";
+  slideB4.style.zIndex = "1";
+
+  setInterval(() => {
+    if (directionForward4) {
+      currentIndex4++;
+      if (currentIndex4 === images4.length) {
+        directionForward4 = false;
+        currentIndex4 = images4.length - 2;
+      }
+    } else {
+      currentIndex4--;
+      if (currentIndex4 < 0) {
+        directionForward4 = true;
+        currentIndex4 = 1;
+      }
+    }
+
+    const nextImage4 = images4[currentIndex4];
+    const img4 = new Image();
+    img4.src = nextImage4;
+
+    img4.onload = () => {
+      const currentSlide4 = showingA4 ? slideA4 : slideB4;
+      const nextSlide4 = showingA4 ? slideB4 : slideA4;
+
+      nextSlide4.style.backgroundImage = `url('${nextImage4}')`;
+      nextSlide4.style.zIndex = "3";
+      nextSlide4.style.opacity = "1";
+
+      currentSlide4.style.opacity = "0";
+      currentSlide4.style.zIndex = "1";
+
+      showingA4 = !showingA4;
+    };
+  }, 3000);
+</script>
+
+<script>
+  const slideA5 = document.getElementById("slideA5");
+  const slideB5 = document.getElementById("slideB5");
+
+  let currentIndex5 = 0;
+  let directionForward5 = true;
+  let showingA5 = true;
+
+  const images5 = [
+  "img/block5_one.jpg",
+  "img/block5_two.jpg",
+  "img/block5_three.jpg"
+];
+
+
+  slideA5.style.backgroundImage = `url('${images5[currentIndex5]}')`;
+  slideA5.style.opacity = "1";
+  slideA5.style.zIndex = "2";
+  slideB5.style.opacity = "0";
+  slideB5.style.zIndex = "1";
+
+  setInterval(() => {
+    if (directionForward5) {
+      currentIndex5++;
+      if (currentIndex5 === images5.length) {
+        directionForward5 = false;
+        currentIndex5 = images5.length - 2;
+      }
+    } else {
+      currentIndex5--;
+      if (currentIndex5 < 0) {
+        directionForward5 = true;
+        currentIndex5 = 1;
+      }
+    }
+
+    const nextImage5 = images5[currentIndex5];
+    const img5 = new Image();
+    img5.src = nextImage5;
+
+    img5.onload = () => {
+      const currentSlide5 = showingA5 ? slideA5 : slideB5;
+      const nextSlide5 = showingA5 ? slideB5 : slideA5;
+
+      nextSlide5.style.backgroundImage = `url('${nextImage5}')`;
+      nextSlide5.style.zIndex = "3";
+      nextSlide5.style.opacity = "1";
+
+      currentSlide5.style.opacity = "0";
+      currentSlide5.style.zIndex = "1";
+
+      showingA5 = !showingA5;
+    };
+  }, 3000);
+</script>
 
 
 
