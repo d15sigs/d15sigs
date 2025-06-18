@@ -365,6 +365,7 @@ button {
 
 .menu-items.centered li a {
   font-size: clamp(16px, 5vw, 28px);
+  line-height: 1.1;
   color: black;
   text-decoration: none;
   font-weight: 300;
