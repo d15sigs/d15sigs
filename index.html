@@ -9,6 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@300&amp;display=swap" rel="stylesheet"/>
 <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300&display=swap" rel="stylesheet">
 
+
 </head>
 <body>
 
@@ -23,7 +24,11 @@
      <a href="#">RU</a> | <a href="#">EN</a>
   </div>
 
- <section class="photo-slide first-slide" style="background-image: url('img/Dg.jpg');" onclick="toggleMenu()"></section>
+ <section class="photo-slide first-slide" onclick="toggleMenu()">
+  <div class="slide-layer visible" id="slideA"></div>
+  <div class="slide-layer" id="slideB"></div>
+</section>
+
   <section class="photo-slide" style="background-image: url('img/photo1.jpg');" onclick="toggleMenu2()"></section>
  <section class="photo-slide" style="background-image: url('img/photo2.jpg');"></section>
 
@@ -123,5 +128,68 @@
 });
 
 </script>
+
+
+<script>
+  const slideA = document.getElementById("slideA");
+  const slideB = document.getElementById("slideB");
+  const images = [
+    "img/Dg.jpg",
+    "img/Dg1.jpg",
+    "img/Dg2.jpg",
+    "img/Dg3.jpg",
+    "img/Dg4.jpg"
+  ];
+
+  let currentIndex = 0;
+  let showingA = true;
+
+  // Старт: показать первый слайд
+  slideA.style.backgroundImage = `url('${images[0]}')`;
+  slideA.style.opacity = "1";
+  slideA.style.zIndex = "2";
+
+  // Подготовить второй
+  slideB.style.backgroundImage = `url('${images[1]}')`;
+  slideB.style.opacity = "0";
+  slideB.style.zIndex = "1";
+
+  currentIndex = 1;
+
+  setInterval(() => {
+  const nextIndex = (currentIndex + 1) % images.length;
+  const nextImage = images[nextIndex];
+
+  const img = new Image();
+  img.src = nextImage;
+
+  img.onload = () => {
+    if (showingA) {
+      slideB.style.backgroundImage = `url('${nextImage}')`;
+      slideB.style.zIndex = "3";
+      slideB.style.opacity = "1";
+
+      slideA.style.opacity = "0";
+      slideA.style.zIndex = "1";
+    } else {
+      slideA.style.backgroundImage = `url('${nextImage}')`;
+      slideA.style.zIndex = "3";
+      slideA.style.opacity = "1";
+
+      slideB.style.opacity = "0";
+      slideB.style.zIndex = "1";
+    }
+
+    showingA = !showingA;
+    currentIndex = nextIndex;
+  };
+}, 3000);
+
+
+</script>
+
+
+
+
 </body>
 
