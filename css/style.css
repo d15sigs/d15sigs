@@ -434,6 +434,15 @@ background-color: transparent; /* или #111 – чтобы не было бе�
 .slide-layer {
   background-color: transparent;
 }
+@media (orientation: landscape) and (max-height: 500px) {
+  .menu-items.centered li a {
+    font-size: clamp(12px, 4vw, 20px);
+  }
+
+  .menu-items.centered li {
+    margin: 8px 0;
+  }
+}
 
 
 
