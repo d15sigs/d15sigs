@@ -431,7 +431,7 @@ background-color: transparent; /* или #111 – чтобы не было бе�
   z-index: 1;
 }
 .slide-layer {
-  background-color: red !important;
+  background-color: transparent;
 }
 
 
