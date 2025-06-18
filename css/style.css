@@ -443,6 +443,15 @@ background-color: transparent; /* или #111 – чтобы не было бе�
     margin: 8px 0;
   }
 }
+@media (orientation: landscape) and (max-height: 430px) {
+  .menu-items.centered li {
+    margin: 6px 0;
+  }
+
+  .menu-items.centered li a {
+    font-size: clamp(12px, 4vw, 18px);
+  }
+}
 
 
 
