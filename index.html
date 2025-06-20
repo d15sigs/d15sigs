@@ -24,25 +24,25 @@
      <a href="#">RU</a> | <a href="#">EN</a>
   </div>
 
- <section class="photo-slide first-slide" onclick="toggleMenu()">
+ <section class="photo-slide first-slide" onclick="toggleMenu1()">
   <div class="slide-layer visible" id="slideA"></div>
   <div class="slide-layer" id="slideB"></div>
 </section>
-<section class="photo-slide first-slide" onclick="toggleMenu()">
+<section class="photo-slide first-slide" onclick="toggleMenu2()">
   <div class="slide-layer visible" id="slideA2"></div>
   <div class="slide-layer" id="slideB2"></div>
 </section>
-<section class="photo-slide first-slide" onclick="toggleMenu()">
+<section class="photo-slide first-slide" onclick="toggleMenu3()">
   <div class="slide-layer visible" id="slideA3"></div>
   <div class="slide-layer" id="slideB3"></div>
 </section>
 
-<section class="photo-slide first-slide" onclick="toggleMenu()">
+<section class="photo-slide first-slide" onclick="toggleMenu4()">
   <div class="slide-layer visible" id="slideA4"></div>
   <div class="slide-layer" id="slideB4"></div>
 </section>
 
-<section class="photo-slide first-slide" onclick="toggleMenu()">
+<section class="photo-slide first-slide" onclick="toggleMenu5()">
   <div class="slide-layer visible" id="slideA5"></div>
   <div class="slide-layer" id="slideB5"></div>
 </section>
@@ -54,19 +54,55 @@
 
 
   <!-- Меню -->
-   <div class="side-menu" id="sideMenu">
+ <!-- Меню для первого блока -->
+<div class="side-menu" id="sideMenu1">
   <ul class="menu-items centered">
-    <li><a href="#">Re:boot</a></li>
-    <li><a href="#">Lull</a></li>
-    <li><a href="#">Techno</a></li>
-    <li><a href="#">Xeno</a></li>
-    <li><a href="#">Proto</a></li>
-    <li><a href="#">Utility</a></li>
+    <li><a href="#">RE:BOOT</a></li>
+    <li><a href="#">START</a></li>
+    <li><a href="#">SYSTEM</a></li>
   </ul>
 </div>
+<div class="menu-overlay" id="overlay1" onclick="toggleMenu1()"></div>
 
-  <!-- Затемнение -->
-  <div id="overlay" class="menu-overlay" onclick="toggleMenu()"></div>
+<!-- Меню для второго блока -->
+<div class="side-menu" id="sideMenu2">
+  <ul class="menu-items centered">
+    <li><a href="#">PROTO</a></li>
+    <li><a href="#">SHELL</a></li>
+    <li><a href="#">CORE</a></li>
+  </ul>
+</div>
+<div class="menu-overlay" id="overlay2" onclick="toggleMenu2()"></div>
+
+<!-- Меню для третьего блока -->
+<div class="side-menu" id="sideMenu3">
+  <ul class="menu-items centered">
+    <li><a href="#">TECHNO</a></li>
+    <li><a href="#">FABRIC</a></li>
+    <li><a href="#">ALGO</a></li>
+  </ul>
+</div>
+<div class="menu-overlay" id="overlay3" onclick="toggleMenu3()"></div>
+
+<!-- Меню для четвёртого блока -->
+<div class="side-menu" id="sideMenu4">
+  <ul class="menu-items centered">
+    <li><a href="#">XENO</a></li>
+    <li><a href="#">INTERFACE</a></li>
+    <li><a href="#">PATH</a></li>
+  </ul>
+</div>
+<div class="menu-overlay" id="overlay4" onclick="toggleMenu4()"></div>
+
+<!-- Меню для пятого блока -->
+<div class="side-menu" id="sideMenu5">
+  <ul class="menu-items centered">
+    <li><a href="#">UTILITY</a></li>
+    <li><a href="#">TOOLS</a></li>
+    <li><a href="#">AUX</a></li>
+  </ul>
+</div>
+<div class="menu-overlay" id="overlay5" onclick="toggleMenu5()"></div>
 
 
   <!-- Скрипт открытия/закрытия -->
@@ -432,6 +468,64 @@
       showingA5 = !showingA5;
     };
   }, 3000);
+</script>
+
+<script>
+function closeMenu(menuId, overlayId) {
+  const menu = document.getElementById(menuId);
+  const overlay = document.getElementById(overlayId);
+  menu.classList.remove("open");
+  overlay.classList.remove("visible");
+}
+
+function toggleMenuX(index) {
+  const menu = document.getElementById("sideMenu" + index);
+  const overlay = document.getElementById("overlay" + index);
+  const isOpen = menu.classList.contains("open");
+  closeAllMenus();
+  if (!isOpen) {
+    menu.classList.add("open");
+    overlay.classList.add("visible");
+  }
+}
+
+function toggleMenu1() { toggleMenuX(1); }
+function toggleMenu2() { toggleMenuX(2); }
+function toggleMenu3() { toggleMenuX(3); }
+function toggleMenu4() { toggleMenuX(4); }
+function toggleMenu5() { toggleMenuX(5); }
+
+function closeAllMenus() {
+  for (let i = 1; i <= 5; i++) {
+    closeMenu("sideMenu" + i, "overlay" + i);
+  }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  for (let i = 1; i <= 5; i++) {
+    const menu = document.getElementById("sideMenu" + i);
+    const overlay = document.getElementById("overlay" + i);
+
+    // Клик по затемнению — закрывает
+    overlay.addEventListener("click", () => {
+      closeMenu("sideMenu" + i, "overlay" + i);
+    });
+
+    // Клик по ссылке — не закрывает меню
+    menu.querySelectorAll('a').forEach(el => {
+      el.addEventListener("click", e => {
+        e.stopPropagation();
+      });
+    });
+
+    // Клик по пустому месту внутри меню — закрывает
+    menu.addEventListener("click", (e) => {
+      if (!e.target.closest('a')) {
+        closeMenu("sideMenu" + i, "overlay" + i);
+      }
+    });
+  }
+});
 </script>
 
 
